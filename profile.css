@@ -1,0 +1,66 @@
+section {
+  min-height: 100vh;
+  width: 700px;
+  max-width: 95vw;
+  margin: 0 auto;
+  display: grid;
+  align-content: center;
+}
+section > a {
+  width: max-content;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  gap: calc(var(--default-gap)/4);
+  margin-top: var(--default-gap);
+  margin-bottom: var(--default-gap);
+}
+section a > svg {
+  fill: var(--link-text);
+  background-color: var(--link-bg);
+}
+section a:hover > svg {
+  fill: var(--link-hover-text);
+  background-color: var(--link-hover-bg);
+}
+section > h1 {
+  margin-bottom: var(--default-gap);
+}
+section > form {
+  margin-bottom: var(--default-gap);
+}
+section > form > fieldset > p {
+  margin-bottom: var(--default-gap);
+}
+section > form > fieldset > .showPassword {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  gap: var(--default-gap);
+  margin-bottom: var(--default-gap);
+}
+section > form > fieldset > .showPassword > p {
+  font-size: var(--font-size-small);
+}
+section #descrition-feedback,
+section #password-feedback {
+  font-size: var(--font-size-small);
+  min-height: calc(var(--default-gap) * 1.5);
+}
+button.danger {
+  min-height: 40px;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  justify-content: center;
+  gap: var(--default-gap);
+}
+button.danger > span.icon > svg {
+  display: none;
+}
+button.danger:hover > span.text {
+  display: none;
+}
+button.danger:hover > span.icon > svg {
+  display: grid;
+}

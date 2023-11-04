@@ -1,0 +1,26 @@
+section {
+  min-height: 100vh;
+  width: 700px;
+  max-width: 98vw;
+  margin: 0 auto;
+  display: grid;
+  align-content: center;
+}
+section > p {
+  margin-bottom: var(--default-gap);
+}
+section > a {
+  width: max-content;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  gap: calc(var(--default-gap)/4);
+}
+section a > svg {
+  fill: var(--link-text);
+  background-color: var(--link-bg);
+}
+section a:hover > svg {
+  fill: var(--link-hover-text);
+  background-color: var(--link-hover-bg);
+}

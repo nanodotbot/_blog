@@ -15,6 +15,19 @@ main {
   max-width: 98vw;
   margin: 0 auto;
 }
+#data-protection {
+  display: none;
+  margin-top: var(--default-gap);
+}
+#data-protection > p {
+  font-size: var(--font-size-small);
+}
+#data-protection > p > button > span {
+  font-size: var(--font-size-small);
+}
+#data-protection.open {
+  display: grid;
+}
 .showPassword {
   display: grid;
   grid-template-columns: max-content min-content;
@@ -30,4 +43,12 @@ main {
 #feedback {
   min-height: calc(3 * var(--default-gap));
   margin-top: var(--default-gap);
+  width: 700px;
+  max-width: 98vw;
+  font-size: var(--font-size-small);
+}
+@media screen and (max-width: 360px) {
+  div.toggle {
+    grid-template-columns: min-content max-content;
+  }
 }

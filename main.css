@@ -57,6 +57,8 @@
 
     --success: #4caf50;
     --error: #f44336;
+    --error-light: #f55449;
+    --error-lightest: #faaba6;
     --neutral: #2196f3;
 
     --theme: var(--white);
@@ -72,6 +74,7 @@
     --background-transparent-theme: var(--background-transparent-light);
 
     --text: var(--black);
+    --disabled-text: var(--grey);
     --selection-text: var(--black);
     --selection-bg: var(--blue-lightest);
 
@@ -118,6 +121,7 @@
     --font-size-small: 1.4rem;
     --font-size-smallest: 1.2rem;
 
+    --border-lighter: .1rem solid var(--blue-light);
     --border: .1rem solid var(--blue-darker);
     --border-bolder: .3rem solid var(--blue-darker);
 
@@ -155,7 +159,7 @@
     font-family: 'Karla';
     font-style: normal;
     font-weight: 400;
-    src: url('../Karla/static/Karla-Regular.ttf');
+    src: url('../Karla/static/Karla-SemiBold.ttf');
 }
 
 /* chrome scrollbar */
@@ -220,7 +224,7 @@ html,
     font-family: 'Source Code Pro';
     font-style: normal;
     font-weight: 400;
-    src: url('../Source_Code_Pro/static/SourceCodePro-Regular.ttf');
+    src: url('../Source_Code_Pro/static/SourceCodePro-SemiBold.ttf');
 }
 
 /* main */
@@ -270,6 +274,10 @@ p {
     width: 100%;
 }
 
+p > b {
+    font-weight: 400;
+}
+
 a {
     font-style: normal;
     text-decoration: none;
@@ -284,6 +292,21 @@ a {
 a:hover {
     color: var(--link-hover-text);
     background-color: var(--link-hover-bg);
+}
+
+fieldset {
+    padding: var(--default-gap);
+    border: var(--border);
+}
+
+fieldset.danger {
+    border: .1rem solid var(--error);
+}
+
+legend {
+    padding: var(--default-gap);
+
+    font-size: var(--font-size-small);
 }
 
 input,
@@ -362,19 +385,37 @@ button.disabled {
     background-color: var(--button-disabled-bg);
 }
 
+button.danger {
+    color: var(--white);
+    background-color: var(--error);
+}
+button.danger:hover {
+    color: var(--button-text);
+    background-color: var(--error-lightest);
+}
+button.danger:hover > span.text {
+    color: var(--button-text);
+}
+button.danger > span.icon > svg {
+    fill: var(--white);
+}
+button.danger:hover > span.icon > svg {
+    fill: var(--button-text);
+}
+
 button.tab {
-    color: var(--button-disabled-text);
+    color: var(--disabled-text);
     background-color: transparent;
     border: none;
     border-bottom: .1rem solid var(--grey-lightest);
 }
 button.tab:hover {
     color: var(--text);
-    border-bottom: .1rem solid var(--blue-darker);
+    border-bottom: var(--border);
 }
 button.tab.active {
-    color: var(--button-text);
-    border-bottom: .1rem solid var(--blue-darker);
+    color: var(--text);
+    border-bottom: var(--border);
 }
 
 button.link {
@@ -385,14 +426,17 @@ button.link {
     font-style: normal;
     line-height: 0;
     text-decoration: none;
+    background-color: var(--link-bg);
 
     transition: var(--transition-fast);
 
-    background-color: var(--link-bg);
-
     cursor: context-menu;
 }
-button.link:hover {
+button.link > span {
+    color: var(--link-text);
+    background-color: var(--link-bg);
+}
+button.link:hover > span {
     color: var(--link-hover-text);
     background-color: var(--link-hover-bg);
 }
@@ -400,7 +444,7 @@ svg.icon {
     height: var(--svg);
     width: var(--svg);
 
-    fill: var(--text);
+    fill: var(--link-text);
     background-color: var(--link-bg);
 }
 svg.icon:hover {
@@ -464,6 +508,13 @@ code > span {
 
 /* Toggle */
 
+div.toggle {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    align-items: center;
+    gap: var(--default-gap);
+}
+
 .toggle-input {
     display: none;
 }
@@ -496,7 +547,7 @@ input.toggle-input:checked + label.toggle-label::before {
     left: var(--toggle-height);
 }
 
-dialog {
+div.modal {
     display: none;
     position: fixed;
     top: 0;
@@ -504,24 +555,40 @@ dialog {
     z-index: 6;
 
     height: 100vh;
-    width: 100vw;
-    border: 1px solid black;
+    width: calc(100vw - (100vw - 100%));
+    border: none;
 
-    background-color: transparent;
+    background-color: var(--background-transparent-theme);
 }
-dialog[open] {
+div.modal.open {
     display: grid;
-    align-content: center;
+    align-items: center;
     justify-content: center;
 }
-
-dialog > p {
-    max-width: 300px;
+div.modal > div.modal-inner {
+    height: min-content;
+    width: 700px;
+    max-width: 95vw;
+    background-color: var(--background);
+    border: var(--border-lighter);
 }
-dialog > button {
-    font-family: var(--code-family);
+div.modal > div.modal-inner > div.modal-header {
+    height: var(--svg);
+    text-align: right;
+}
 
-    width: max-content;
+div.modal > div.modal-inner > div.modal-body {
+    padding: 0 var(--default-gap) calc(var(--default-gap) / 2) var(--default-gap);
+}
+
+div.modal > div.modal-inner > div.modal-body > h2,
+div.modal > div.modal-inner > div.modal-body > p,
+div.modal > div.modal-inner > div.modal-body > button {
+    text-align: center;
+}
+div.modal > div.modal-inner > div.modal-body > p {
+    width: 100%;
+    margin-bottom: var(--default-gap);
 }
 
 .spinner {
@@ -563,4 +630,10 @@ dialog > button {
 }
 .neutral {
     color: var(--neutral);
+}
+
+@media screen and (max-width: 400px) {
+    fieldset {
+        padding: calc(var(--default-gap) / 2) calc(var(--default-gap) / 3);
+    }
 }

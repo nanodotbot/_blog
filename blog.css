@@ -1,0 +1,119 @@
+header,
+main {
+  position: relative;
+  width: 700px;
+  max-width: 95vw;
+  margin: 0 auto;
+}
+header {
+  height: var(--svg);
+  padding: 0;
+  text-align: right;
+}
+header#main-header {
+  display: grid;
+  grid-template-columns: min-content min-content min-content;
+  align-items: center;
+  justify-content: end;
+  gap: calc(var(--default-gap) / 2);
+}
+header#main-header > a,
+header#main-header > #logout > span {
+  font-size: var(--font-size-small);
+}
+form {
+  width: 100%;
+}
+form > #drop-area {
+  border: 0.1rem dashed var(--input-border);
+  margin: var(--default-gap) 0;
+  text-align: center;
+}
+form > #drop-area > label {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  height: calc(6 * var(--default-gap));
+}
+form > #drop-area > input {
+  display: none;
+}
+form > #preview {
+  display: none;
+  max-height: 500px;
+}
+form > #preview > #preview-image {
+  max-height: inherit;
+}
+#message-feedback {
+  font-size: var(--font-size-small);
+}
+hr {
+  margin-top: calc(var(--default-gap) / 1.2);
+  margin-bottom: calc(var(--default-gap) / 1.2);
+}
+.meta {
+  display: grid;
+  grid-template-columns: auto max-content;
+  align-items: center;
+  gap: var(--default-gap);
+}
+.meta > .meta-right {
+  display: grid;
+  grid-template-columns: max-content max-content;
+}
+.meta > .meta-right > .date {
+  font-size: var(--font-size-smallest);
+}
+.meta > .meta-right > .post-delete > svg {
+  height: 17px;
+  width: 17px;
+}
+.meta > .meta-right > .post-delete:hover > svg {
+  fill: var(--error-light);
+}
+.meta > .meta-user {
+  overflow: hidden;
+  text-align: left;
+}
+.meta > .meta-user > a {
+  font-size: var(--font-size-small);
+}
+#theme {
+  height: min-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--default-gap) var(--default-gap) var(--default-gap);
+}
+.theme-picker,
+.color-picker {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: var(--default-gap);
+  margin-bottom: var(--default-gap);
+}
+.theme-picker > #light {
+  display: grid;
+  justify-content: center;
+}
+.theme-picker > #light > p {
+  width: min-content;
+}
+#save-theme-meta {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  gap: var(--default-gap);
+}
+@media screen and (max-width: 330px) {
+  .meta {
+    grid-template-columns: unset;
+    grid-template-rows: auto max-content;
+    gap: 0;
+    margin-bottom: calc(var(--default-gap) / 4);
+  }
+}

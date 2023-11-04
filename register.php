@@ -7,17 +7,26 @@ $password = $data['password'];
 
 $username = htmlspecialchars($username);
 $password = htmlspecialchars($password);
+$password = password_hash($password, PASSWORD_DEFAULT);
 
 require './pdo.php';
 
-$statement = $pdo->prepare('INSERT INTO users (name, password) VALUES (:username, :password)');
-$statement->bindParam(':username', $username);
-$statement->bindParam(':password', $password);
-$statement->execute();
+try {
+    $statement = $pdo->prepare('INSERT INTO users (username, password) VALUES (:username, :password)');
+    $statement->bindParam(':username', $username);
+    $statement->bindParam(':password', $password);
+    $statement->execute();
+    $message = 'Erfolgreich registriert. Bitte melde dich an.';
+} catch (PDOException $e) {
+    if (strpos($e->getMessage(),'UNIQUE constraint failed')){
+        $message = 'Benutzername ist bereits vergeben.';
+    } else {
+        $message = 'Ein unbekannter Fehler ist aufgetreten.';
+    }
+}
 
 $json = '{
-    "username": "' . $username . '"
+    "message": "' . $message . '"
 }';
-
 echo $json;
 ?>

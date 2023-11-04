@@ -1,98 +1,3 @@
-// const toggleLabel = document.getElementById('toggle-label');
-let light = true;
-
-// const lightTheme = {
-//     '--theme': 'var(--white)',
-//     '--theme-contrast': 'var(--dark)',
-//     '--background': 'var(--white)',
-    // '--footer': 'var(--dark)',
-    
-    // '--background-transparent-theme': 'var(--background-transparent-light)',
-
-    // '--text': 'var(--black)',
-    // '--selection-text': 'var(--black)',
-    // '--selection-bg': 'var(--blue-lightest)',
-
-    // '--link-text': 'var(--grey)',
-    // '--link-bg': 'var(--white)',
-    // '--link-hover-text': 'var(--blue-darkest)',
-    // '--link-hover-bg': 'var(--blue-lightest)',
-
-    // '--link-contrast-text': 'var(--blue-lightest)',
-    // '--link-contrast-bg': 'var(--grey-darker)',
-    // '--link-contrast-hover-text': 'var(--blue-light)',
-    // '--link-contrast-hover-bg': 'var(--black)',
-    
-    // '--button-text': 'var(--black)',
-    // '--button-bg': 'var(--blue-light)',
-    // '--button-hover-text': 'var(--blue-darkest)',
-    // '--button-hover-bg': 'var(--blue-lightest)',
-
-    // '--button-disabled-text': 'var(--grey)',
-    // '--button-disabled-bg': 'var(--grey-lightest)',
-
-    // '--input-text': 'var(--text)',
-    // '--input-border': 'var(--grey-lighter)',
-    // '--input-focus-border': 'var(--blue-darker)',
-    
-    // '--toggle-bg': 'var(--grey-lightest)',
-    // '--toggle-checked-bg': 'var(--blue-light)',
-    // '--toggle-switch-color': 'var(--blue-darker)',
-    // '--toggle-switch-bg': 'var(--blue-darker)',
-
-//     '--scroll-thumb': 'var(--dark)',
-//     '--scroll-track': 'var(--blue-light)',
-
-//     '--code-text': 'var(--white)',
-//     '--code-bg': 'var(--dark)',
-// };
-
-// const darkTheme = {
-//     '--theme': 'var(--dark)',
-//     '--theme-contrast': 'var(--white)',
-//     '--background': 'var(--dark)',
-    // '--footer': 'var(--dark)',
-    
-    // '--background-transparent-theme': 'var(--background-transparent-dark)',
-
-    // '--text': 'var(--white)',
-    // '--selection-text': 'var(--white)',
-    // '--selection-bg': 'var(--grey-darker)',
-
-    // '--link-text': 'var(--grey-lightest)',
-    // '--link-bg': 'var(--dark)',
-    // '--link-hover-text': 'var(--blue-default)',
-    // '--link-hover-bg': 'var(--grey-darker)',
-
-    // '--link-contrast-text': 'var(--blue-lightest)',
-    // '--link-contrast-bg': 'var(--grey-darker)',
-    // '--link-contrast-hover-text': 'var(--blue-light)',
-    // '--link-contrast-hover-bg': 'var(--black)',
-    
-    // '--button-text': 'var(--black)',
-    // '--button-bg': 'var(--blue-default)',
-    // '--button-hover-text': 'var(--blue-darkest)',
-    // '--button-hover-bg': 'var(--blue-light)',
-
-    // '--button-disabled-text': 'var(--grey-darker)',
-    // '--button-disabled-bg': 'var(--grey-lighter)',
-
-    // '--input-text': 'var(--text)',
-    // '--input-border': 'var(--grey-lighter)',
-    // '--input-focus-border': 'var(--blue-default)',
-    
-    // '--toggle-bg': 'var(--grey-lighter)',
-    // '--toggle-checked-bg': 'var(--blue-light)',
-    // '--toggle-switch-color': 'var(--blue-darker)',
-    // '--toggle-switch-bg': 'var(--blue-darker)',
-
-    // '--scroll-thumb': 'var(--blue-darker)',
-    // '--scroll-track': 'var(--dark)',
-
-//     '--code-text': 'var(--white)',
-//     '--code-bg': 'var(--black)',
-// };
-
 const lightThemeBlue = {
     '--theme': 'var(--white)',
     '--theme-contrast': 'var(--dark)',
@@ -102,6 +7,7 @@ const lightThemeBlue = {
     '--background-transparent-theme': 'var(--background-transparent-light)',
 
     '--text': 'var(--black)',
+    '--disabled-text': 'var(--grey)',
     '--selection-text': 'var(--black)',
     '--selection-bg': 'var(--blue-lightest)',
 
@@ -111,7 +17,7 @@ const lightThemeBlue = {
     '--link-hover-bg': 'var(--blue-lightest)',
 
     '--link-contrast-text': 'var(--blue-lightest)',
-    // '--link-contrast-bg': 'var(--grey-darker)',
+    // '--link-contrast-bg': 'var(--dark)',
     '--link-contrast-hover-text': 'var(--blue-light)',
     // '--link-contrast-hover-bg': 'var(--black)',
     
@@ -132,8 +38,8 @@ const lightThemeBlue = {
     '--toggle-switch-color': 'var(--blue-darker)',
     '--toggle-switch-bg': 'var(--blue-darker)',
 
-    '--scroll-thumb': 'var(--dark)',
-    '--scroll-track': 'var(--blue-light)',
+    '--scroll-thumb': 'var(--blue-light)',
+    '--scroll-track': 'var(--dark)',
 
     '--code-text': 'var(--white)',
     '--code-bg': 'var(--dark)',
@@ -148,6 +54,7 @@ const darkThemeBlue = {
     '--background-transparent-theme': 'var(--background-transparent-dark)',
 
     '--text': 'var(--white)',
+    '--disabled-text': 'var(--grey-lightest)',
     '--selection-text': 'var(--blue-default)',
     '--selection-bg': 'var(--grey-darker)',
 
@@ -157,7 +64,7 @@ const darkThemeBlue = {
     '--link-hover-bg': 'var(--grey-darker)',
 
     '--link-contrast-text': 'var(--blue-lightest)',
-    // '--link-contrast-bg': 'var(--grey-darker)',
+    // '--link-contrast-bg': 'var(--dark)',
     '--link-contrast-hover-text': 'var(--blue-light)',
     // '--link-contrast-hover-bg': 'var(--black)',
     
@@ -193,6 +100,7 @@ const lightThemeGreen = {
     '--background-transparent-theme': 'var(--background-transparent-light)',
 
     '--text': 'var(--black)',
+    '--disabled-text': 'var(--grey)',
     '--selection-text': 'var(--black)',
     '--selection-bg': 'var(--green-lightest)',
 
@@ -202,7 +110,7 @@ const lightThemeGreen = {
     '--link-hover-bg': 'var(--green-lightest)',
 
     '--link-contrast-text': 'var(--green-lightest)',
-    // '--link-contrast-bg': 'var(--grey-darker)',
+    // '--link-contrast-bg': 'var(--dark)',
     '--link-contrast-hover-text': 'var(--green-light)',
     // '--link-contrast-hover-bg': 'var(--black)',
     
@@ -223,8 +131,8 @@ const lightThemeGreen = {
     '--toggle-switch-color': 'var(--green-darker)',
     '--toggle-switch-bg': 'var(--green-darker)',
 
-    '--scroll-thumb': 'var(--dark)',
-    '--scroll-track': 'var(--green-light)',
+    '--scroll-thumb': 'var(--green-light)',
+    '--scroll-track': 'var(--dark)',
 
     '--code-text': 'var(--white)',
     '--code-bg': 'var(--dark)',
@@ -239,6 +147,7 @@ const darkThemeGreen = {
     '--background-transparent-theme': 'var(--background-transparent-dark)',
 
     '--text': 'var(--white)',
+    '--disabled-text': 'var(--grey-lightest)',
     '--selection-text': 'var(--green-default)',
     '--selection-bg': 'var(--grey-darker)',
 
@@ -248,7 +157,7 @@ const darkThemeGreen = {
     '--link-hover-bg': 'var(--grey-darker)',
 
     '--link-contrast-text': 'var(--green-lightest)',
-    // '--link-contrast-bg': 'var(--grey-darker)',
+    // '--link-contrast-bg': 'var(--dark)',
     '--link-contrast-hover-text': 'var(--green-light)',
     // '--link-contrast-hover-bg': 'var(--black)',
     
@@ -284,6 +193,7 @@ const lightThemeRed = {
     '--background-transparent-theme': 'var(--background-transparent-light)',
 
     '--text': 'var(--black)',
+    '--disabled-text': 'var(--grey)',
     '--selection-text': 'var(--black)',
     '--selection-bg': 'var(--red-lightest)',
 
@@ -293,7 +203,7 @@ const lightThemeRed = {
     '--link-hover-bg': 'var(--red-lightest)',
 
     '--link-contrast-text': 'var(--red-lightest)',
-    // '--link-contrast-bg': 'var(--grey-darker)',
+    // '--link-contrast-bg': 'var(--dark)',
     '--link-contrast-hover-text': 'var(--red-light)',
     // '--link-contrast-hover-bg': 'var(--black)',
     
@@ -314,8 +224,8 @@ const lightThemeRed = {
     '--toggle-switch-color': 'var(--red-darker)',
     '--toggle-switch-bg': 'var(--red-darker)',
 
-    '--scroll-thumb': 'var(--dark)',
-    '--scroll-track': 'var(--red-light)',
+    '--scroll-thumb': 'var(--red-light)',
+    '--scroll-track': 'var(--dark)',
 
     '--code-text': 'var(--white)',
     '--code-bg': 'var(--dark)',
@@ -330,6 +240,7 @@ const darkThemeRed = {
     '--background-transparent-theme': 'var(--background-transparent-dark)',
 
     '--text': 'var(--white)',
+    '--disabled-text': 'var(--grey-lightest)',
     '--selection-text': 'var(--red-default)',
     '--selection-bg': 'var(--grey-darker)',
 
@@ -339,7 +250,7 @@ const darkThemeRed = {
     '--link-hover-bg': 'var(--grey-darker)',
 
     '--link-contrast-text': 'var(--red-lightest)',
-    // '--link-contrast-bg': 'var(--grey-darker)',
+    // '--link-contrast-bg': 'var(--dark)',
     '--link-contrast-hover-text': 'var(--red-light)',
     // '--link-contrast-hover-bg': 'var(--black)',
     
@@ -366,27 +277,3 @@ const darkThemeRed = {
     '--code-text': 'var(--white)',
     '--code-bg': 'var(--black)',
 };
-
-$('#toggle-theme').on('change',
-    function(e) {
-        light =! light;
-        if (!light && blueTheme) {
-            Object.entries(darkThemeBlue).forEach(entry => $(':root').css(entry[0], entry[1]));
-        }
-        if (light && blueTheme) {
-            Object.entries(lightThemeBlue).forEach(entry => $(':root').css(entry[0], entry[1]));
-        }
-        if (!light && greenTheme) {
-            Object.entries(darkThemeGreen).forEach(entry => $(':root').css(entry[0], entry[1]));
-        }
-        if (light && greenTheme) {
-            Object.entries(lightThemeGreen).forEach(entry => $(':root').css(entry[0], entry[1]));
-        }
-        if (!light && redTheme) {
-            Object.entries(darkThemeRed).forEach(entry => $(':root').css(entry[0], entry[1]));
-        }
-        if (light && redTheme) {
-            Object.entries(lightThemeRed).forEach(entry => $(':root').css(entry[0], entry[1]));
-        }
-    }
-);
