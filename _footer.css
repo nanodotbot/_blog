@@ -1,0 +1,29 @@
+footer {
+  padding: calc(2 * var(--default-gap)) 0;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: calc(var(--default-gap) / 2);
+  background-color: var(--footer);
+}
+footer > a,
+footer button.link {
+  display: block;
+  width: max-content;
+  margin: 0 auto;
+  font-size: var(--font-size-small);
+  line-height: var(--line-height);
+  color: var(--link-footer);
+  background-color: var(--link-contrast-bg);
+}
+footer > a:hover,
+footer button.link:hover {
+  color: var(--link-contrast-hover-text);
+  background-color: var(--link-contrast-hover-bg);
+}
+footer > hr {
+  width: 700px;
+  max-width: 96vw;
+  margin: var(--default-gap) 0;
+}

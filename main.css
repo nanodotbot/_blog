@@ -88,6 +88,9 @@
     --link-contrast-hover-text: var(--blue-light);
     --link-contrast-hover-bg: var(--grey-darker);
     
+    --link-nav: var(--text);
+    --link-footer: var(--white);
+
     --button-text: var(--black);
     --button-bg: var(--blue-light);
     --button-hover-text: var(--blue-darkest);
@@ -128,7 +131,7 @@
     --transition-fast: all .1s ease;
     --transition-slow: all .5s ease;
 
-    --default-margin: 1.5rem auto;
+    --default-margin: .8rem auto;
     --default-gap: 1.5rem;
     --svg: calc(1.7 * var(--default-gap));
 

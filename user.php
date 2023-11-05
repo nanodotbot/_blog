@@ -28,11 +28,9 @@ if (isset($_SESSION['user'])){
             <link rel="stylesheet" href="../main.css">
             <link rel="stylesheet" href="../user.css">
 
-            <script src="../jquery-3.7.1.min.js" defer></script>
-
-            <script src="../toggle-mode/themes.js" defer></script>
-            <script src="../color-picker/colors.js" defer></script>
-            <script src="../toggle-mode/get-theme.js" defer></script>
+            <script src="../_theme-themes.js" defer></script>
+            <script src="../_theme-colors.js" defer></script>
+            <script src="../_theme-storage.js" defer></script>
             
             <script src="../user.js" defer></script>
 

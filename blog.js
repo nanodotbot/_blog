@@ -97,6 +97,43 @@ send.onclick = e => {
 };
 
 
+// comments
+
+const comments = document.querySelectorAll('.comment');
+const csends = document.querySelectorAll('.c-send');
+const commentFeedbacks = document.querySelectorAll('.comment-feedback');
+
+csends.forEach((csend, index) => {
+    csend.onclick = async e => {
+        e.preventDefault();
+        const comment = comments[index];
+        let commentValue = comment.value;
+        const commentFeedback = commentFeedbacks[index];
+        const postIndex = comment.getAttribute('data-id');
+        let data = {
+            id: postIndex,
+            message: commentValue
+        }
+        data = JSON.stringify(data);
+        console.log(data);
+        console.log(commentFeedback);
+        let response = await fetch('./blog-post-comment.php', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: data
+        });
+        console.log(response);
+        if (response.ok) {
+            response = await response.json();
+            console.log(response);
+        }
+        location.reload()
+        comment.value = '';
+        commentFeedback.innerText = '';
+    }
+})
+
+
 // delete post
 
 const deleteButtons = document.querySelectorAll('.post-delete');
@@ -105,16 +142,28 @@ const deleteModal = document.getElementById('delete-modal');
 deleteButtons.forEach((button, index) => {
     button.onclick = () => {
         const deletePostButton = document.getElementById('delete-post-confirmation');
+        const deleteQuestion = document.getElementById('delete-question');
+        const deleteQuestionHeader = document.getElementById('delete-question-header');
         const printInfo = document.getElementById('post-info');
         const id = button.getAttribute('data-id');
         const message = button.getAttribute('data-message');
+        const type = button.getAttribute('data-type');
+        if (type === 'post') {
+            deleteQuestionHeader.innerText = 'Post löschen';
+            deleteQuestion.innerText = 'Möchtest du diesen Post wirklich unwiderruflich löschen?';
+        }
+        if (type === 'comment') {
+            deleteQuestionHeader.innerText = 'Kommentar löschen';
+            deleteQuestion.innerText = 'Möchtest du diesen Kommentar wirklich unwiderruflich löschen?';
+        }
         printInfo.innerText = '«' + message.substring(0, 25) + '»';
         deleteModal.classList.add('open');
 
         deletePostButton.onclick = async () => {
             let data = {
                 id: id,
-                message: message
+                message: message,
+                type: type
             };
             data = JSON.stringify(data);
             let response = await fetch('./blog-delete.php', {

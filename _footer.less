@@ -1,0 +1,33 @@
+footer  {
+    padding: calc(2 * var(--default-gap)) 0;
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: calc(var(--default-gap) / 2);
+
+    background-color: var(--footer);
+
+    > a, button.link {
+        display: block;
+        width: max-content;
+        margin: 0 auto;
+
+        font-size: var(--font-size-small);
+        line-height: var(--line-height);
+        color: var(--link-footer);
+        background-color: var(--link-contrast-bg);
+
+        &:hover {
+            color: var(--link-contrast-hover-text);
+            background-color: var(--link-contrast-hover-bg);    
+        }
+    }
+
+    > hr {
+        width: 700px;
+        max-width: 98vw - (100% - 98vw);
+        margin: var(--default-gap) 0;
+    }
+}

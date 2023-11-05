@@ -13,11 +13,14 @@ if (isset($_SESSION['user'])) {
 
         <link rel="stylesheet" href="./main.css">
         <link rel="stylesheet" href="./blog.css">
+        <link rel="stylesheet" href="./_footer.css">
         
         <script src="./blog.js" defer></script>
         
         <script src="./_textarea.js" defer></script>
         <script src="./_modal.js" defer></script>
+        <link rel="stylesheet" href="./_image-modal.css">
+        <script src="./_image-modal.js" defer></script>
 
         <link rel="stylesheet" href="./_theme.css">
         <link rel="stylesheet" href="./_theme-color-picker.css">
@@ -54,8 +57,8 @@ if (isset($_SESSION['user'])) {
                 </div>
                 
                 <div>
-                    <label for="message">Nachricht</label>
-                    <textarea class="textarea" name="message" id="message" autofocus></textarea>
+                    <label for="message">Deine Nachricht</label>
+                    <textarea class="textarea" name="message" id="message"></textarea>
                 </div>
 
                 <button id="send">Absenden</button>
@@ -66,10 +69,12 @@ if (isset($_SESSION['user'])) {
             <div id="posts">
                 <?php 
                     require('./blog-get.php');
+                    require('./blog-get-comments.php');
                     foreach ($response as $key => $value) {
                         $date = date_create($value['created_at']);
                         $date = date_format($date,"d.m.Y H:i:s");
                 ?>
+                    <hr>
                     <div class="post">
                         <div class="meta">
                             <p class="meta-user">
@@ -77,7 +82,7 @@ if (isset($_SESSION['user'])) {
                             </p>
                             <div class="meta-right">
                                 <p class="date"><?= $date ?></p>
-                                <button class="link post-delete" data-id="<?= $value['id'] ?>" data-message="<?= $value['message'] ?>">
+                                <button class="link post-delete" data-id="<?= $value['id'] ?>" data-message="<?= $value['message'] ?>" data-type="post">
                                     <?php 
                                         if($_SESSION['user'] === $value['username']) {
                                     ?>
@@ -88,15 +93,64 @@ if (isset($_SESSION['user'])) {
                                 </button>
                             </div>
                         </div>
+                        <?php 
+                            if($value['picture']) {
+                        ?>
+                                <img src="./media/<?= $value['picture'] ?>" class="image-modal-image">
+                        <?php 
+                            }
+                        ?>
                         <p><?= $value['message'] ?></p>
                     </div>
-                    <hr>
-                <?php 
+                    <?php
+                        foreach($comment as $ckey => $cvalue) {
+                            $cdate = date_create($cvalue['created_at']);
+                            $cdate = date_format($cdate,"d.m.Y H:i:s");    
+                            if ($value['id'] === $cvalue['postid']) {
+                            
+                    ?>
+                                <hr>
+                                <div class="post">
+                                    <div class="meta">
+                                        <p class="meta-user">
+                                            <a href="./user.php/<?= urlencode($cvalue['username']) ?>"><?= $cvalue['username'] ?></a>
+                                        </p>
+                                        <div class="meta-right">
+                                            <p class="date"><?= $cdate ?></p>
+                                            <button class="link post-delete" data-id="<?= $cvalue['id'] ?>" data-message="<?= $cvalue['message'] ?>" data-type="comment">
+                                                <?php 
+                                                    if($_SESSION['user'] === $cvalue['username']) {
+                                                ?>
+                                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="15" viewBox="0 -960 960 960" width="15"><path d="M304.615-160q-26.846 0-45.731-18.884Q240-197.769 240-224.615V-720h-40v-40h160v-30.77h240V-760h160v40h-40v495.385Q720-197 701.5-178.5 683-160 655.385-160h-350.77ZM680-720H280v495.385q0 10.769 6.923 17.692T304.615-200h350.77q9.23 0 16.923-7.692Q680-215.385 680-224.615V-720ZM392.307-280h40.001v-360h-40.001v360Zm135.385 0h40.001v-360h-40.001v360ZM280-720v520-520Z"/></svg>
+                                                <?php 
+                                                }
+                                                ?>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p><?= $cvalue['message'] ?></p>
+                                </div>
+                    <?php
+                            }
+                        }
+                    ?>
+                    <div class="comment-post">
+                        <label>Dein Kommentar
+                            <textarea data-id="<?= $value['id'] ?>" class="textarea comment" name="comment"></textarea>
+                        </label>
+                    </div>
+                    <button class="c-send">Absenden</button>
+                    <p class="comment-feedback textarea-feedback feedback"></p>
+                <?php
                     }
                 ?>
             </div>
 
         </main>
+
+        <footer>
+            <a href="https://notanumber.ch/" target="_blank" rel="noopener noreferrer">https://notanumber.ch/</a>
+        </footer>
 
         <div id="theme-modal" class="modal">
 
@@ -160,6 +214,18 @@ if (isset($_SESSION['user'])) {
 
         </div>
 
+        <div id="image-modal">
+
+            <div id="image-modal-header" class="modal-header">
+                    
+                <button class="link"><svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M256-213.847 213.847-256l224-224-224-224L256-746.153l224 224 224-224L746.153-704l-224 224 224 224L704-213.847l-224-224-224 224Z" /></svg></button>
+                
+            </div>
+
+            <img id="image-modal-image" src="./imgs/logo.png">
+
+        </div>
+
         <div id="delete-modal" class="modal">
 
             <div id="delete-modal-inner" class="modal-inner">
@@ -168,9 +234,9 @@ if (isset($_SESSION['user'])) {
                     <button id="close-modal" class="modal-close link"><svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M256-213.847 213.847-256l224-224-224-224L256-746.153l224 224 224-224L746.153-704l-224 224 224 224L704-213.847l-224-224-224 224Z" /></svg></button>
                 </div>
                 <div class="modal-body">
-                    <h2>Post löschen</h2>
+                    <h2 id="delete-question-header">Post/Kommentar löschen</h2>
                     <p id="post-info"></p>
-                    <p>Möchtest du diesen Post wirklich unwiderruflich löschen?</p>
+                    <p id="delete-question">Möchtest du diesen Post/Kommentar wirklich unwiderruflich löschen?</p>
                     <button id="delete-post-confirmation" class="danger">Ja</button>
                 </div>
 

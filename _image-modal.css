@@ -1,0 +1,26 @@
+/* .image-modal-image:hover {
+    filter: brightness(1.1);
+} */
+
+#image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    height: 100vh;
+    width: calc(100vw - (100vw - 100%));
+        
+    display: none;
+    align-content: center;
+    justify-content: center;
+    background-color: var(--background);
+}
+#image-modal.open {
+    display: grid;
+}
+#image-modal-header {
+    text-align: right;
+}
+#image-modal-image {
+    display: block;
+}
