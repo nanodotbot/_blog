@@ -65,8 +65,8 @@ if ($type === 'comment') {
     }
 }
 // TODO: add to productive
-// $mail_message = wordwrap($data, 70);
-// mail('info@nano.sx', 'blog', $mail_message);
+$mail_message = wordwrap($user . ' ' . $id . ' ' . $type, 70);
+mail('info@nano.sx', 'blog', $mail_message);
 
 echo $data;
 ?>

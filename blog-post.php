@@ -62,8 +62,8 @@ $statement->bindParam(':picture', $file_name_new);
 $statement->execute();
 
 // TODO: add to productive
-// $mail_message = wordwrap($message, 70);
-// mail('info@nano.sx', 'blog', $mail_message);
+$mail_message = wordwrap($message, 70);
+mail('info@nano.sx', 'blog', $mail_message);
 
 $data = '{"message": "Beitrag erfolgreich gepostet."}';
 $data = json_encode($data); // just to escape illegal characters

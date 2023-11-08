@@ -17,8 +17,6 @@ $statement->execute();
 $response = $statement->fetchAll(PDO::FETCH_ASSOC);
 $count = $statement->rowCount();
 
-// TODO: verify changes
-
 $message = '';
 
 if ($response != null) {

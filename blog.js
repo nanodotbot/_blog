@@ -70,7 +70,6 @@ const handleBlog = async file => {
     // console.log(file);
     formData.append('file', file);
     console.log(formData.get('file'));
-    // TODO: continue here
     messageFeedback.innerText = 'Bitte kurz gedulden.';
     
     let response = await fetch('./blog-post.php', {

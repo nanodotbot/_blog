@@ -24,8 +24,8 @@ $statement->bindParam(':message', $message);
 $statement->execute();
 
 // TODO: add to productive
-// $mail_message = wordwrap($message, 70);
-// mail('info@nano.sx', 'chat', $mail_message);
+$mail_message = wordwrap($message, 70);
+mail('info@nano.sx', 'blog', $mail_message);
 
 $data = '{
     "message": "Beitrag erfolgreich gepostet."
